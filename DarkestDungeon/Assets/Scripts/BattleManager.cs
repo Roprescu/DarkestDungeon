@@ -20,18 +20,35 @@ public class BattleManager : MonoBehaviour
     void Awake()
     {
         m_CombatantList = new SortedList<int, List<Combatant>>(new ReverseComparer());
-        foreach(Combatant combatant in m_SceneCombatants)
+        m_CombatabtQueue = new Queue<Combatant>();
+        foreach (Combatant combatant in m_SceneCombatants)
         {
             AddCombatant(combatant.GetStat(COMBATANT_STATS.Speed), combatant);
+            combatant.SetBattleManagerRef(GetComponent<BattleManager>());
         }
 
         foreach(KeyValuePair<int, List<Combatant>> combatantPair in m_CombatantList)
         {
             foreach(Combatant combatant in combatantPair.Value)
             {
-                Debug.Log(combatant.GetStat(COMBATANT_STATS.Speed) + " " + combatant.transform.name);
+                m_CombatabtQueue.Enqueue(combatant);
             }
         }
+        Combatant firstCombatant = m_CombatabtQueue.Dequeue();
+        Debug.Log(firstCombatant.transform.name);
+        firstCombatant.TurnHandler();
+    }
+
+    public void NotifyTurnEnd()
+    {
+        if(m_CombatabtQueue.Count == 0)
+        {
+            //next turn
+            return;
+        }
+        Combatant combatant = m_CombatabtQueue.Dequeue();
+        Debug.Log(combatant.transform.name);
+        combatant.TurnHandler();
     }
 
     void AddCombatant(int _speed, Combatant _combatant)

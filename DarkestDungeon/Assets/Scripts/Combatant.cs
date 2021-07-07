@@ -10,6 +10,8 @@ public enum COMBATANT_STATS
 
 public class Combatant : MonoBehaviour
 {
+    BattleManager m_BattleManagerRef;
+
     [SerializeField]
     Transform m_YourTurnUI;
     [SerializeField]
@@ -30,9 +32,17 @@ public class Combatant : MonoBehaviour
 
     }
 
-    public virtual void TurnHandler()
+    public void TurnHandler()
     {
-        
+        m_YourTurnUI.gameObject.SetActive(true);
+        StartCoroutine(WaitCourutine());
+    }
+
+    IEnumerator WaitCourutine()
+    {
+        yield return new WaitForSeconds(5);
+        m_YourTurnUI.gameObject.SetActive(false);
+        m_BattleManagerRef.NotifyTurnEnd();
     }
 
 
@@ -46,5 +56,10 @@ public class Combatant : MonoBehaviour
                 Debug.Log("STAT INVALID");
                 return -999;
         }
+    }
+
+    public void SetBattleManagerRef(BattleManager _ref)
+    {
+        m_BattleManagerRef = _ref;
     }
 }

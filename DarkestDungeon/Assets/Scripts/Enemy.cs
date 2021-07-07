@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Enemy : Combatant
 {
-    // Start is called before the first frame update
-    void Start()
+    /*
+    public override void TurnHandler()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        throw new System.NotImplementedException();
+    }*/
 }
