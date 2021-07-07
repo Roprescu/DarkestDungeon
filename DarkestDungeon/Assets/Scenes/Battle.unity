@@ -164,12 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe1cd7a3bfde1748b66a0e752c1e00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PartyList:
+  m_SceneCombatants:
   - {fileID: 725732718}
   - {fileID: 1267810065}
   - {fileID: 271352755}
   - {fileID: 136741090}
-  m_EnemyList:
   - {fileID: 2092331416}
   - {fileID: 923742819}
   - {fileID: 338647536}
@@ -220,7 +219,7 @@ GameObject:
   - component: {fileID: 136741089}
   - component: {fileID: 136741090}
   m_Layer: 0
-  m_Name: P4
+  m_Name: Vestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 3
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &271352752
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 271352754}
   - component: {fileID: 271352755}
   m_Layer: 0
-  m_Name: P3
+  m_Name: Plague Doctor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,7 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 1
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &338647533
@@ -496,7 +497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 3
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &647851061
@@ -684,7 +686,7 @@ GameObject:
   - component: {fileID: 725732717}
   - component: {fileID: 725732718}
   m_Layer: 0
-  m_Name: P1
+  m_Name: Crusader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -766,7 +768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 2
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &923742816
@@ -863,7 +866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 2
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &963194225
@@ -996,7 +1000,7 @@ GameObject:
   - component: {fileID: 1267810064}
   - component: {fileID: 1267810065}
   m_Layer: 0
-  m_Name: P2
+  m_Name: Leper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,7 +1082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 4
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &1293394661
@@ -1175,7 +1180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 4
   m_HP: 0
   m_MaxHP: 0
 --- !u!1 &1751159119
@@ -1418,6 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d3e5ce786194a8beaae6947a63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_YourTurnUI: {fileID: 0}
+  m_Speed: 1
   m_HP: 0
   m_MaxHP: 0
