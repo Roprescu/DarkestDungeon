@@ -13,6 +13,8 @@ public class Combatant : MonoBehaviour
     BattleManager m_BattleManagerRef;
 
     [SerializeField]
+    HERO_TYPE m_HeroType;
+    [SerializeField]
     Transform m_YourTurnUI;
     [SerializeField]
     int m_Speed;
@@ -20,16 +22,21 @@ public class Combatant : MonoBehaviour
     int m_HP;
     [SerializeField]
     int m_MaxHP;
+    List<Ability> m_AbilitiesList;
 
-    void Start()
+    void Awake()
     {
-
+        SetupAbilities();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetupAbilities()
     {
-
+        m_AbilitiesList = new List<Ability>();
+        List<AbilityInfo> defaultAbilities = Library.instance.GetAbilitiesInfo(m_HeroType);
+        foreach (AbilityInfo ability in defaultAbilities)
+        {
+            // m_AbilitiesList.Add(new Ability(ability));
+        }
     }
 
     public void TurnHandler()
@@ -61,5 +68,10 @@ public class Combatant : MonoBehaviour
     public void SetBattleManagerRef(BattleManager _ref)
     {
         m_BattleManagerRef = _ref;
+    }
+
+    public HERO_TYPE GetHeroType()
+    {
+        return m_HeroType;
     }
 }

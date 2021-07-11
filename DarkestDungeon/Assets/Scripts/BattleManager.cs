@@ -16,27 +16,13 @@ public class BattleManager : MonoBehaviour
     List<Combatant> m_SceneCombatants;
     SortedList<int, List<Combatant>> m_CombatantList;
     Queue<Combatant> m_CombatabtQueue;
+    AbilityDrawer m_AbilitiDrawerRef;
 
     void Awake()
     {
-        m_CombatantList = new SortedList<int, List<Combatant>>(new ReverseComparer());
-        m_CombatabtQueue = new Queue<Combatant>();
-        foreach (Combatant combatant in m_SceneCombatants)
-        {
-            AddCombatant(combatant.GetStat(COMBATANT_STATS.Speed), combatant);
-            combatant.SetBattleManagerRef(GetComponent<BattleManager>());
-        }
-
-        foreach(KeyValuePair<int, List<Combatant>> combatantPair in m_CombatantList)
-        {
-            foreach(Combatant combatant in combatantPair.Value)
-            {
-                m_CombatabtQueue.Enqueue(combatant);
-            }
-        }
-        Combatant firstCombatant = m_CombatabtQueue.Dequeue();
-        Debug.Log(firstCombatant.transform.name);
-        firstCombatant.TurnHandler();
+        SetupCombatants();
+        m_AbilitiDrawerRef = GetComponent<AbilityDrawer>();
+        StartNextRound();
     }
 
     public void NotifyTurnEnd()
@@ -46,30 +32,41 @@ public class BattleManager : MonoBehaviour
             //next turn
             return;
         }
+        StartNextRound();
+    }
+
+    void StartNextRound()
+    {
         Combatant combatant = m_CombatabtQueue.Dequeue();
-        Debug.Log(combatant.transform.name);
+        m_AbilitiDrawerRef.DrawAbilities(combatant);
         combatant.TurnHandler();
+    }
+
+    void SetupCombatants()
+    {
+        m_CombatantList = new SortedList<int, List<Combatant>>(new ReverseComparer());
+        m_CombatabtQueue = new Queue<Combatant>();
+        foreach (Combatant combatant in m_SceneCombatants)
+        {
+            AddCombatant(combatant.GetStat(COMBATANT_STATS.Speed), combatant);
+            combatant.SetBattleManagerRef(GetComponent<BattleManager>());
+        }
+
+        foreach (KeyValuePair<int, List<Combatant>> combatantPair in m_CombatantList)
+        {
+            foreach (Combatant combatant in combatantPair.Value)
+            {
+                m_CombatabtQueue.Enqueue(combatant);
+            }
+        }
     }
 
     void AddCombatant(int _speed, Combatant _combatant)
     {
-        if(!m_CombatantList.ContainsKey(_speed))
+        if (!m_CombatantList.ContainsKey(_speed))
         {
             m_CombatantList[_speed] = new List<Combatant>();
         }
         m_CombatantList[_speed].Add(_combatant);
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
